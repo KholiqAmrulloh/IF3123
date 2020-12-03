@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tugas Implementasi Interface</title>
+</head>
+<body>
+	<h3>Nama : Kholiq Amrulloh</h3>
+	<h3>NIM : 3411181171</h3>
+	<h3>Kelas : DSE-C</h3>
+	<form name="formTugas" action="" onsubmit="return validateForm()" method="POST">
+		<input type="text" name="username" id="username" placeholder="Username" > username harus 3-15 karakter<br>
+		<input type="password" name="password" id="pass" placeholder="Password"> password min 4 digit harus ada huruf besar symbol dan angka<br>
+		<input type="password" name="repeat" id="repeat" placeholder="Ulangi Password"> ulangi password harus sama dengan password<br>
+		<input type="text" name="email" id="email" placeholder="Email"> harus format email<br>
+		<input type="text" name="telp" id="telp" placeholder="Nomor Telpon"> nomor telepon 10-12 digit<br>
+		<textarea id="alamat" style="width: 167px" placeholder="Alamat"></textarea> alamat tidak boleh kosong<br>
+		<input type="submit" name="" value="Submit">
+	</form>
+	<script type="text/javascript"> function validateForm(){
+		var username = document.formTugas.username.value;
+		var password = document.formTugas.pass.value;
+		var passPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{4,}$/;
+		var ulangPass = document.formTugas.repeat.value;  
+		var email = document.formTugas.email.value;
+		var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		var telepon = document.formTugas.telp.value;
+		var telpPattern = /^\d{10,12}$/;
+		var alamat = document.formTugas.alamat.value;
+		var alPattern = /^\w.{1,}$/;
+		if ((username.length < 3 || username.length > 15)) {
+			alert("username harus 3-15 karakter"); 
+			return false;
+		}else if (!password.match(passPattern)){
+			alert("password min 4 digit harus ada huruf besar symbol dan angka");
+			return false;
+		}else if(ulangPass != password){
+			alert("password tidak match");
+			return false;
+		}else if(!email.match(emailPattern)){
+			alert("format email tidak sesuai");
+			return false;
+		}else if(!telepon.match(telpPattern)){
+			alert("nomor telepon 10-12 digit");
+			return false;
+		}else if(!alamat.match(alPattern)){
+			alert("alamat tidak boleh kosong");
+			return false;
+		}
+		return true;
+	}
+</script>
+</body>
+</html>
